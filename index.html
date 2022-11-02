@@ -20,9 +20,9 @@
 
     <div id="app" class="d-flex align-items-center">
         <div class="container">
-            <div class="row h-100">
+            <div class="row">
                 <div class="col-4 p-0 bg-light">
-                    <header class="d-flex justify-content-between p-2">
+                    <header class="d-flex justify-content-between px-3">
                         <div class="my_profile_name d-flex align-items-center">
                             <img src="./assets/img/avatar_io.jpg" alt="avatar_io">
                             <div>Sofia</div>
@@ -35,7 +35,7 @@
                         </div>
                     </header>
 
-                    <div class="message_alert d-flex align-items-center p-3">
+                    <div class="message_alert d-flex align-items-center px-3">
                         <div class="icon d-flex align-items-center justify-content-center fs-5"><i
                                 class="fa-solid fa-bell-slash"></i></div>
 
@@ -54,7 +54,7 @@
                             placeholder="Cerca o inizia una nuova chat">
                     </div>
 
-                    <div class="chat_left">
+                    <div class="chat_left px-3">
                         <div class="chat d-flex justify-content-between p-2" v-for="contact in contacts">
                             <div class="d-flex">
                                 <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'"

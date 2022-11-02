@@ -37,12 +37,6 @@ img {
     transform: translate(-50%, -50%);
 }
 
-.container,
-.row,
-[class^="col"] {
-    height: 90vh;
-}
-
 header {
     height: 70px;
     background-color: var(--app-left-bg-header);
@@ -59,6 +53,7 @@ header {
 }
 
 .message_alert {
+    height: 70px;
     background-color: var(--app-left-alert);
 }
 
@@ -71,6 +66,7 @@ header {
 }
 
 .search {
+    height: 50px;
     background-color: var(--bg-light);
     color: var(--app-left-icons);
 }
@@ -83,8 +79,7 @@ header {
 }
 
 .chat_left {
-    height: 100%;
-    max-height: 64vh;
+    height: calc(90vh - 190px);
     overflow-y: scroll;
 }
 
