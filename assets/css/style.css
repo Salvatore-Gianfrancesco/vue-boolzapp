@@ -5,8 +5,17 @@
 }
 
 :root {
+    --light: #fefffe;
+    --bg-light: #fafbfb;
     --bg-top: #019689;
     --bg-bottom: #d9dad5;
+    --app-left-bg-header: #eaeaea;
+    --app-left-icons: #b6b9bb;
+    --app-left-alert: #8edbfd;
+}
+
+img {
+    max-width: 100%;
 }
 
 .bg_top {
@@ -30,4 +39,43 @@
 
 .container {
     height: 90vh;
+}
+
+header {
+    height: 70px;
+    background-color: var(--app-left-bg-header);
+}
+
+.my_profile_name img {
+    height: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.my_profile_icons i {
+    color: var(--app-left-icons);
+}
+
+.message_alert {
+    background-color: var(--app-left-alert);
+}
+
+.message_alert .icon {
+    height: 50px;
+    aspect-ratio: 1/1;
+    background-color: var(--light);
+    color: var(--app-left-alert);
+    border-radius: 50%;
+}
+
+.search {
+    background-color: var(--bg-light);
+    color: var(--app-left-icons);
+}
+
+.search .icon,
+.search input {
+    background-color: var(--light);
+    border: 1px solid var(--app-left-icons);
+    border-radius: 5px;
 }
