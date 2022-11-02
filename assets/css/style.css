@@ -125,9 +125,15 @@ footer input {
     font-size: 14px;
 }
 
-/* .chat.active {
+.chat.active {
     background-color: var(--app-left-bg-header);
-} */
+}
+
+.chat:hover {
+    background-color: var(--app-left-bg-header);
+    cursor: pointer;
+    transition: 0.3s;
+}
 
 .message {
     min-height: 50px;
