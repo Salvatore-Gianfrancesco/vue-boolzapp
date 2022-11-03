@@ -54,12 +54,17 @@
                         <input type="text" class="w-100 d-flex align-items-center ms-1 p-1"
                             placeholder="Cerca o inizia una nuova chat" v-model.trim="searchContact"
                             @keydown.enter="search">
+
+                        <div class="d-flex align-items-center px-2 fs-5" v-if="filtered"
+                            @click.preventDefault()="removeFilter">
+                            <i class="fa-regular fa-circle-xmark"></i>
+                        </div>
                     </div>
 
                     <div class="chat_left">
-                        <div class="chat p-2" :class="(contact.visible) ? 'd-flex justify-content-between' : 'd-none'"
-                            :class="(activeChat === i) ? 'active' : ''" v-for="(contact, i) in contacts"
-                            @click.preventDefault()="activateChat(i)">
+                        <div class="chat p-2"
+                            :class="((contact.visible) ? 'd-flex justify-content-between' : 'd-none') + ((activeChat === i) ? ' active' : '')"
+                            v-for="(contact, i) in contacts" @click.preventDefault()="activateChat(i)">
                             <div class="d-flex">
                                 <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'"
                                     :alt="'avatar' + contact.avatar">

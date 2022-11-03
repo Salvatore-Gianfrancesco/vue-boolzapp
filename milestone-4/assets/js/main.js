@@ -6,6 +6,7 @@ createApp({
             activeChat: 0,
             newMessage: "",
             searchContact: "",
+            filtered: false,
             contacts: [
                 {
                     name: 'Michele',
@@ -210,19 +211,27 @@ createApp({
 
         search() {
             if (this.searchContact.length > 0) {
-                console.log("search done");
-                console.log(this.contacts[0].name.includes("mic"));
-
+                // console.log("search done");
+                // console.log(this.contacts[0].name.includes("mic"));
                 this.contacts.forEach(contact => {
-                    if (contact.name.includes(this.searchContact)) {
+                    if (contact.name.toLowerCase().includes(this.searchContact.toLowerCase())) {
                         contact.visible = true;
                     } else {
                         contact.visible = false;
                     }
                 });
 
+                this.filtered = true;
                 this.searchContact = "";
             }
+        },
+
+        removeFilter() {
+            this.contacts.forEach(contact => {
+                contact.visible = true;
+            });
+
+            this.filtered = false;
         }
     }
 }).mount('#app');
