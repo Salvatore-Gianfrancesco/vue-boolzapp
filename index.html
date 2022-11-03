@@ -55,8 +55,8 @@
                     </div>
 
                     <div class="chat_left">
-                        <div class="chat d-flex justify-content-between p-2" :class="(contact.visible) ? 'active' : ''"
-                            v-for="(contact, i) in contacts" @click.preventDefault()="activateChat(contact, i)">
+                        <div class="chat d-flex justify-content-between p-2" :class="(activeChat === i) ? 'active' : ''"
+                            v-for="(contact, i) in contacts" @click.preventDefault()="activateChat(i)">
                             <div class="d-flex">
                                 <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'"
                                     :alt="'avatar' + contact.avatar">

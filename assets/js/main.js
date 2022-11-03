@@ -30,7 +30,7 @@ createApp({
                 {
                     name: 'Fabio',
                     avatar: '_2',
-                    visible: false,
+                    visible: true,
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
@@ -52,7 +52,7 @@ createApp({
                 {
                     name: 'Samuele',
                     avatar: '_3',
-                    visible: false,
+                    visible: true,
                     messages: [
                         {
                             date: '28/03/2020 10:10:40',
@@ -74,7 +74,7 @@ createApp({
                 {
                     name: 'Alessandro B.',
                     avatar: '_4',
-                    visible: false,
+                    visible: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -91,7 +91,7 @@ createApp({
                 {
                     name: 'Alessandro L.',
                     avatar: '_5',
-                    visible: false,
+                    visible: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -108,7 +108,7 @@ createApp({
                 {
                     name: 'Claudia',
                     avatar: '_6',
-                    visible: false,
+                    visible: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -130,7 +130,7 @@ createApp({
                 {
                     name: 'Federico',
                     avatar: '_7',
-                    visible: false,
+                    visible: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -147,7 +147,7 @@ createApp({
                 {
                     name: 'Davide',
                     avatar: '_8',
-                    visible: false,
+                    visible: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -170,9 +170,7 @@ createApp({
         }
     },
     methods: {
-        activateChat(contact, i) {
-            this.contacts[this.activeChat].visible = false;
-            contact.visible = true;
+        activateChat(i) {
             this.activeChat = i
         }
     }
