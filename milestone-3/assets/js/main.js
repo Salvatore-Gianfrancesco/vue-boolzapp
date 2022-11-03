@@ -4,6 +4,7 @@ createApp({
     data() {
         return {
             activeChat: 0,
+            newMessage: "",
             contacts: [
                 {
                     name: 'Michele',
@@ -172,6 +173,28 @@ createApp({
     methods: {
         activateChat(i) {
             this.activeChat = i
+        },
+
+        insertNewMessage(text) {
+            /* let currentDate = new Date();
+            console.log(currentDate);
+            console.log(currentDate.getDay().toString().length);
+            currentDate = ((currentDate.getDay().toString().length === 1) ? "0" : "") + currentDate.getDay() + "/" + currentDate.getMonth() + "/" + currentDate.getFullYear();
+            console.log(((currentDate.getDay().toString().length === 1) ? "0" : "") + currentDate.getDay() + "/" + currentDate.getMonth() + "/" + currentDate.getFullYear());
+            console.log(currentDate); */
+
+            if (text.length > 0) {
+                // console.log("message sent");
+                const newObj = {
+                    date: '03/11/2022 11:00:00',
+                    message: text,
+                    status: 'sent'
+                }
+
+                this.contacts[this.activeChat].messages.push(newObj);
+                this.newMessage = "";
+            }
+
         }
     }
 }).mount('#app');
