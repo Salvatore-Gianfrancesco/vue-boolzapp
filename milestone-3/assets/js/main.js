@@ -193,8 +193,18 @@ createApp({
 
                 this.contacts[this.activeChat].messages.push(newObj);
                 this.newMessage = "";
-            }
 
-        }
+                setTimeout(() => {
+                    console.log("message received");
+                    const newObj = {
+                        date: '03/11/2022 11:00:00',
+                        message: "ok",
+                        status: 'received'
+                    }
+
+                    this.contacts[this.activeChat].messages.push(newObj);
+                }, 1000);
+            }
+        },
     }
 }).mount('#app');
