@@ -107,7 +107,7 @@
                     <footer class="d-flex align-items-center justify-content-between">
                         <i class="fa-regular fa-face-smile fs-5 px-4"></i>
                         <input type="text" class="w-100 d-flex align-items-center mx-1 p-2 border-0"
-                            placeholder="Scrivi un messaggio" v-model="newMessage"
+                            placeholder="Scrivi un messaggio" v-model.trim="newMessage"
                             @keydown.enter="insertNewMessage(newMessage)">
                         <i class="fa-solid fa-microphone fs-5 px-4"></i>
                     </footer>
