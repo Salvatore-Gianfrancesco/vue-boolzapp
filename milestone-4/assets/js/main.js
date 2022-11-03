@@ -5,6 +5,7 @@ createApp({
         return {
             activeChat: 0,
             newMessage: "",
+            searchContact: "",
             contacts: [
                 {
                     name: 'Michele',
@@ -31,7 +32,7 @@ createApp({
                 {
                     name: 'Fabio',
                     avatar: '_2',
-                    visible: true,
+                    visible: false,
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
@@ -206,5 +207,22 @@ createApp({
                 }, 1000);
             }
         },
+
+        search() {
+            if (this.searchContact.length > 0) {
+                console.log("search done");
+                console.log(this.contacts[0].name.includes("mic"));
+
+                this.contacts.forEach(contact => {
+                    if (contact.name.includes(this.searchContact)) {
+                        contact.visible = true;
+                    } else {
+                        contact.visible = false;
+                    }
+                });
+
+                this.searchContact = "";
+            }
+        }
     }
 }).mount('#app');

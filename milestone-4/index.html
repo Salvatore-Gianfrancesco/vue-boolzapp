@@ -47,17 +47,19 @@
                     </div>
 
                     <div class="search d-flex p-2">
-                        <div class="icon d-flex align-items-center">
+                        <div class="icon d-flex align-items-center" @click.preventDefault()="search">
                             <i class="fa-solid fa-magnifying-glass px-3 py-1"></i>
                         </div>
 
                         <input type="text" class="w-100 d-flex align-items-center ms-1 p-1"
-                            placeholder="Cerca o inizia una nuova chat">
+                            placeholder="Cerca o inizia una nuova chat" v-model.trim="searchContact"
+                            @keydown.enter="search">
                     </div>
 
                     <div class="chat_left">
-                        <div class="chat d-flex justify-content-between p-2" :class="(activeChat === i) ? 'active' : ''"
-                            v-for="(contact, i) in contacts" @click.preventDefault()="activateChat(i)">
+                        <div class="chat p-2" :class="(contact.visible) ? 'd-flex justify-content-between' : 'd-none'"
+                            :class="(activeChat === i) ? 'active' : ''" v-for="(contact, i) in contacts"
+                            @click.preventDefault()="activateChat(i)">
                             <div class="d-flex">
                                 <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'"
                                     :alt="'avatar' + contact.avatar">
