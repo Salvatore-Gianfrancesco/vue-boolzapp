@@ -188,7 +188,7 @@ createApp({
             if (text.length > 0) {
                 // console.log("message sent");
                 const newObj = {
-                    date: '03/11/2022 11:00:00',
+                    date: this.setTime(),
                     message: text,
                     status: 'sent'
                 }
@@ -199,7 +199,7 @@ createApp({
                 setTimeout(() => {
                     // console.log("message received");
                     const newObj = {
-                        date: '03/11/2022 11:00:00',
+                        date: this.setTime(),
                         message: "ok",
                         status: 'received'
                     }
@@ -232,6 +232,25 @@ createApp({
             });
 
             this.filtered = false;
+        },
+
+        setTime() {
+            let currentDay = luxon.DateTime.now().toLocaleString();
+            // console.log(currentDay);
+
+            // console.log(currentDay.charAt(1));
+            if (currentDay.charAt(1) === '/') {
+                currentDay = currentDay.split('');
+                currentDay.unshift('0');
+                currentDay = currentDay.join('');
+            }
+            // console.log(currentDay);
+
+            let currentTime = new Date()
+            currentTime = `${currentTime.getHours().toString()}:${currentTime.getMinutes().toString()}:${currentTime.getSeconds().toString()}`;
+            // console.log(currentTime);
+
+            return `${currentDay} ${currentTime}`;
         }
     }
 }).mount('#app');
