@@ -8,6 +8,10 @@ createApp({
             lastAccess: "",
             searchContact: "",
             filtered: false,
+            showDeleteWindow: false,
+            messageIndexToDelete: 0,
+            xPosition: 0,
+            yPosition: 0,
             contacts: [
                 {
                     name: 'Michele',
@@ -258,9 +262,41 @@ createApp({
             }
 
             this.lastAccess = this.contacts[this.activeChat].messages[i].date.substring(11, 16);
+        },
+
+        deleteWindow(i) {
+            // console.log(i);
+            this.messageIndexToDelete = i;
+
+            const deleteEl = document.querySelector(".delete_message");
+            deleteEl.style.top = this.yPosition + 'px';
+            deleteEl.style.left = this.xPosition + 'px';
+
+            this.showDeleteWindow = !this.showDeleteWindow;
+        },
+
+        deleteMessage() {
+            const i = this.messageIndexToDelete;
+            // console.log(i);
+
+            this.contacts[this.activeChat].messages.splice(i, 1);
+            this.showDeleteWindow = false;
+        },
+
+        init() {
+            if (window.Event) {
+                document.captureEvents(Event.MOUSEMOVE);
+            }
+            document.onmousemove = this.getCursorXY;
+        },
+
+        getCursorXY(e) {
+            this.xPosition = (window.Event) ? e.pageX : event.clientX + (document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft);
+            this.yPosition = (window.Event) ? e.pageY : event.clientY + (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
         }
     },
     mounted() {
+        window.onload = this.init;
         this.getLastAccess();
     }
 }).mount('#app');
