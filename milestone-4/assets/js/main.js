@@ -247,10 +247,10 @@ createApp({
             // console.log(currentDay);
 
             let currentTime = new Date()
-            currentTime = `${currentTime.getHours().toString()}:${currentTime.getMinutes().toString()}:${currentTime.getSeconds().toString()}`;
+            currentTime = `${currentTime.getHours().toString().padStart(2, '0')}:${currentTime.getMinutes().toString().padStart(2, '0')}:${currentTime.getSeconds().toString().padStart(2, '0')}`;
             // console.log(currentTime);
 
-            return `${currentDay} ${currentTime}`;
+            return `${currentDay} ${currentTime}`
         }
     }
 }).mount('#app');
