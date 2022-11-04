@@ -70,12 +70,14 @@
                                     :alt="'avatar' + contact.avatar">
                                 <div class="ps-3">
                                     <div class="chat_name">{{contact.name}}</div>
-                                    <div class="last_message">{{contact.messages[contact.messages.length -
-                                        1].message}}</div>
+                                    <div class="last_message">
+                                        {{contact.messages[contact.messages.length - 1].message}}
+                                    </div>
                                 </div>
                             </div>
-                            <div class="time">{{contact.messages[contact.messages.length -
-                                1].date.substring(11, 16)}}</div>
+                            <div class="time">
+                                {{contact.messages[contact.messages.length - 1].date.substring(11, 16)}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -102,10 +104,11 @@
                     </header>
 
                     <main class="p-5">
-                        <div class="message_row d-flex" :class="(message.status==='sent') ? 'justify-content-end' : ''"
+                        <div class="message_row d-flex"
+                            :class="(message.status === 'sent') ? 'justify-content-end' : ((message.status === 'none') ? 'justify-content-center' : '')"
                             v-for="(message, i) in contacts[activeChat].messages">
                             <div class="message d-flex justify-content-between my-2 p-2"
-                                :class="(message.status==='sent') ? 'sent' : 'received'"
+                                :class="(message.status === 'sent') ? 'sent' : ((message.status === 'received') ? 'received' : 'no_message')"
                                 @click.preventDefault()="deleteWindow(i)">
                                 <div class="align-self-center">{{message.message}}</div>
                                 <div class="align-self-end">{{message.date.substring(11, 16)}}</div>
@@ -113,9 +116,9 @@
                         </div>
 
                         <div class="delete_message bg-light d-flex align-items-center position-absolute"
-                            :class="(showDeleteWindow) ? '' : 'd-none'" @click.preventDefault()="deleteMessage">Delete
-                            message</div>
-                        <!--  -->
+                            :class="(showDeleteWindow) ? '' : 'd-none'" @click.preventDefault()="deleteMessage">
+                            Delete message
+                        </div>
                     </main>
 
                     <footer class="d-flex align-items-center justify-content-between">

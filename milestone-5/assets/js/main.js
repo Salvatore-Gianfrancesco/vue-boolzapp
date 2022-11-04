@@ -185,6 +185,10 @@ createApp({
 
         insertNewMessage(text) {
             if (text.length > 0) {
+                if (this.contacts[this.activeChat].messages[0].status === "none") {
+                    this.contacts[this.activeChat].messages.splice(0, 1);
+                }
+
                 // console.log("message sent");
                 const newObj = {
                     date: this.setTime(),
@@ -281,6 +285,15 @@ createApp({
 
             this.contacts[this.activeChat].messages.splice(i, 1);
             this.showDeleteWindow = false;
+
+            if (this.contacts[this.activeChat].messages.length === 0) {
+                const newObj = {
+                    date: '',
+                    message: 'No messages in this chat',
+                    status: 'none'
+                }
+                this.contacts[this.activeChat].messages.push(newObj)
+            }
         },
 
         init() {

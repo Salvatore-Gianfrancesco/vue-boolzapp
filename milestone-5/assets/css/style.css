@@ -162,6 +162,10 @@ footer input {
     background-color: var(--light);
 }
 
+.message.no_message {
+    background-color: var(--light);
+}
+
 .delete_message {
     height: 50px;
     width: 170px;
