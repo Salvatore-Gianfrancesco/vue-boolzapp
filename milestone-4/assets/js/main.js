@@ -5,6 +5,7 @@ createApp({
         return {
             activeChat: 0,
             newMessage: "",
+            lastAccess: "",
             searchContact: "",
             filtered: false,
             contacts: [
@@ -174,17 +175,11 @@ createApp({
     },
     methods: {
         activateChat(i) {
-            this.activeChat = i
+            this.activeChat = i;
+            this.getLastAccess();
         },
 
         insertNewMessage(text) {
-            /* let currentDate = new Date();
-            console.log(currentDate);
-            console.log(currentDate.getDay().toString().length);
-            currentDate = ((currentDate.getDay().toString().length === 1) ? "0" : "") + currentDate.getDay() + "/" + currentDate.getMonth() + "/" + currentDate.getFullYear();
-            console.log(((currentDate.getDay().toString().length === 1) ? "0" : "") + currentDate.getDay() + "/" + currentDate.getMonth() + "/" + currentDate.getFullYear());
-            console.log(currentDate); */
-
             if (text.length > 0) {
                 // console.log("message sent");
                 const newObj = {
@@ -205,6 +200,8 @@ createApp({
                     }
 
                     this.contacts[this.activeChat].messages.push(newObj);
+
+                    this.getLastAccess();
                 }, 1000);
             }
         },
@@ -251,6 +248,19 @@ createApp({
             // console.log(currentTime);
 
             return `${currentDay} ${currentTime}`
+        },
+
+        getLastAccess() {
+            let i = this.contacts[this.activeChat].messages.length - 1;
+            // console.log(i);
+            while (this.contacts[[this.activeChat]].messages[i].status !== "received") {
+                i--;
+            }
+
+            this.lastAccess = this.contacts[this.activeChat].messages[i].date.substring(11, 16);
         }
+    },
+    mounted() {
+        this.getLastAccess();
     }
 }).mount('#app');
